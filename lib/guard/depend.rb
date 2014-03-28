@@ -3,12 +3,17 @@ require 'guard/plugin'
 
 module Guard
   class Depend < Plugin
-    require 'guard/depend/options'
     require 'guard/depend/runner'
+
+    DEFAULTS = {
+      run_on_start: false,
+      output_paths: [],
+      cmd: nil
+    }
 
     def initialize(options = {})
       super
-      @options = Options.with_defaults(options)
+      @options = options.merge(DEFAULTS)
       @runner = Runner.new
     end
 
