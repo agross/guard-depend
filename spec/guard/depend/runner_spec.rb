@@ -9,7 +9,7 @@ describe Guard::Depend::Runner do
 
     Guard::Notifier.stub(:notify)
   }
-  
+
   let(:error) { nil }
 
   before {
