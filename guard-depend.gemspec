@@ -5,7 +5,7 @@ require 'guard/depend/version'
 
 Gem::Specification.new do |s|
   s.name        = 'guard-depend'
-  s.version     = Guard::Depend::VERSION
+  s.version     = Guard::DependVersion::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Alexander Groß']
   s.email       = ['agross@therightstuff.de']

@@ -1,5 +1,5 @@
 module Guard
-  module Depend
+  module DependVersion
     VERSION = '0.0.1'
   end
 end
