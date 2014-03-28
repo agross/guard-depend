@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://grossweber.com'
   s.license     = 'MIT'
   s.description = %q{Run commands only if build output is not up to date.}
-  s.summary     = %q{guard-depend is useful for projects that produce build output like binaries. guard-depend will only run the command you sify if the build output does not exists or is not up to date with regard to the watched files.}
+  s.summary     = %q{guard-depend is useful for projects that produce build output like binaries. guard-depend will only run the command you specify if the build output does not exist or is not up to date with regard to the watched files.}
 
   s.add_dependency 'rake'
   s.add_dependency 'guard', '~> 2.5'
