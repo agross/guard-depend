@@ -4,6 +4,8 @@ module Guard
   class Depend
     class Runner
       def run(cmd)
+        return unless cmd
+
         cmd = [cmd].flatten
         command = cmd.join(' ')
 
