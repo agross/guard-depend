@@ -18,7 +18,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'guard', '~> 2.5'
 
   s.add_development_dependency 'bundler', '~> 1.5'
-  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'rspec', '>= 3.0.0.beta2'
+  s.add_development_dependency 'rspec-its'
   s.add_development_dependency 'guard-bundler'
   s.add_development_dependency 'guard-rspec'
 

@@ -3,8 +3,8 @@ require 'guard/depend'
 
 describe Guard::Depend::Detect do
   before {
-    Guard::UI.stub(:info)
-    Guard::UI.stub(:debug)
+    allow(Guard::UI).to receive(:info)
+    allow(Guard::UI).to receive(:debug)
   }
 
   describe 'defaults' do
@@ -19,19 +19,19 @@ describe Guard::Depend::Detect do
 
   context 'nil changed paths' do
     it 'should not be out of date' do
-      subject.out_of_date?(nil).should == false
+      expect(subject.out_of_date?(nil)).to eq(false)
     end
   end
 
   context 'omitted changed paths' do
     it 'should not be out of date' do
-      subject.out_of_date?.should == false
+      expect(subject.out_of_date?).to eq(false)
     end
   end
 
   context 'no changed paths' do
     it 'should not be out of date' do
-      subject.out_of_date?([]).should == false
+      expect(subject.out_of_date?([])).to eq(false)
     end
   end
 
@@ -47,7 +47,7 @@ describe Guard::Depend::Detect do
 
   shared_examples :outdated do
     it 'should be out of date' do
-      @outdated.should == true
+      expect(@outdated).to eq(true)
     end
 
     it 'should not report non-outdatedness' do
@@ -57,7 +57,7 @@ describe Guard::Depend::Detect do
 
   shared_examples :not_outdated do
     it 'should not be out of date' do
-      @outdated.should == false
+      expect(@outdated).to eq(false)
     end
 
     it 'should report non-outdatedness' do
@@ -71,16 +71,16 @@ describe Guard::Depend::Detect do
       let(:output_mtime) {}
 
       before {
-        File.stub(:readable?).and_return(false)
+        allow(File).to receive(:readable?).and_return(false)
 
         if input_mtime
-          File.stub(:readable?).with('input').and_return(true)
-          File.stub(:mtime).with('input').and_return(input_mtime)
+          allow(File).to receive(:readable?).with('input').and_return(true)
+          allow(File).to receive(:mtime).with('input').and_return(input_mtime)
         end
 
         if output_mtime
-          File.stub(:readable?).with('output').and_return(true)
-          File.stub(:mtime).with('output').and_return(output_mtime)
+          allow(File).to receive(:readable?).with('output').and_return(true)
+          allow(File).to receive(:mtime).with('output').and_return(output_mtime)
         end
       }
 
@@ -151,11 +151,11 @@ describe Guard::Depend::Detect do
 
     describe 'multiple inputs' do
       before {
-        File.stub(:readable?).and_return(true)
+        allow(File).to receive(:readable?).and_return(true)
 
-        File.stub(:mtime).with('input old').and_return(Time.at(0))
-        File.stub(:mtime).with('input new').and_return(Time.at(1))
-        File.stub(:mtime).with('output').and_return(Time.at(0))
+        allow(File).to receive(:mtime).with('input old').and_return(Time.at(0))
+        allow(File).to receive(:mtime).with('input new').and_return(Time.at(1))
+        allow(File).to receive(:mtime).with('output').and_return(Time.at(0))
       }
 
       subject { described_class.new(['output']) }
@@ -169,11 +169,11 @@ describe Guard::Depend::Detect do
 
     describe 'multiple outputs' do
       before {
-        File.stub(:readable?).and_return(true)
+        allow(File).to receive(:readable?).and_return(true)
 
-        File.stub(:mtime).with('input').and_return(Time.at(0))
-        File.stub(:mtime).with('output old').and_return(Time.at(0))
-        File.stub(:mtime).with('output new').and_return(Time.at(1))
+        allow(File).to receive(:mtime).with('input').and_return(Time.at(0))
+        allow(File).to receive(:mtime).with('output old').and_return(Time.at(0))
+        allow(File).to receive(:mtime).with('output new').and_return(Time.at(1))
       }
 
       subject { described_class.new(['output new', 'output old']) }

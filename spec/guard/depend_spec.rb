@@ -8,9 +8,9 @@ describe Guard::Depend do
 
   subject { described_class.new(cmd: command, output_paths: output_paths, run_on_start: run_on_start) }
 
-  before { subject.runner.stub(:run) }
+  before { allow(subject.runner).to receive(:run) }
 
-  before { Guard::UI.stub(:info) }
+  before { allow(Guard::UI).to receive(:info) }
 
   describe 'defaults' do
     subject { described_class.new }
@@ -35,7 +35,7 @@ describe Guard::Depend do
   end
 
   describe '#start' do
-    before { subject.stub(:run_all) }
+    before { allow(subject).to receive(:run_all) }
     before { subject.start }
 
     it 'should write info' do
@@ -62,7 +62,7 @@ describe Guard::Depend do
   describe '#run_all' do
     let(:command) { 'command' }
 
-    before { subject.runner.stub(:run) }
+    before { allow(subject.runner).to receive(:run) }
 
     before { subject.run_all }
 
@@ -76,7 +76,7 @@ describe Guard::Depend do
 
     context 'outdated' do
       before {
-        subject.detect.stub(:out_of_date?).and_return(true)
+        allow(subject.detect).to receive(:out_of_date?).and_return(true)
         subject.run_on_changes
       }
 
@@ -87,7 +87,7 @@ describe Guard::Depend do
 
     context 'not outdated' do
       before {
-        subject.detect.stub(:out_of_date?).and_return(false)
+        allow(subject.detect).to receive(:out_of_date?).and_return(false)
         subject.run_on_changes
       }
 

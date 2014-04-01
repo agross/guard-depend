@@ -3,18 +3,18 @@ require 'guard/depend'
 
 describe Guard::Depend::Runner do
   before {
-    Guard::UI.stub(:info)
-    Guard::UI.stub(:error)
-    Guard::UI.stub(:debug)
+    allow(Guard::UI).to receive(:info)
+    allow(Guard::UI).to receive(:error)
+    allow(Guard::UI).to receive(:debug)
 
-    Guard::Notifier.stub(:notify)
+    allow(Guard::Notifier).to receive(:notify)
   }
 
   let(:error) { nil }
 
   before {
-    next subject.stub(:sh).and_raise(error) if error
-    subject.stub(:sh)
+    next allow(subject).to receive(:sh).and_raise(error) if error
+    allow(subject).to receive(:sh)
   }
 
   describe 'command execution' do
