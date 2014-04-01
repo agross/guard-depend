@@ -1,6 +1,6 @@
 # Guard::Depend
 
-[![Gem Version](https://badge.fury.io/rb/guard-depend.png)](http://badge.fury.io/rb/guard-depend) [![Dependency Status](https://gemnasium.com/agross/guard-depend.png)](https://gemnasium.com/agross/guard-depend) [![Code Climate](https://codeclimate.com/github/agross/guard-depend.png)](https://codeclimate.com/github/agross/guard-depend)
+[![Gem Version](https://badge.fury.io/rb/guard-depend.png)](http://badge.fury.io/rb/guard-depend) [![Build Status](https://travis-ci.org/agross/guard-depend.png?branch=master)](https://travis-ci.org/agross/guard-depend) [![Dependency Status](https://gemnasium.com/agross/guard-depend.png)](https://gemnasium.com/agross/guard-depend) [![Code Climate](https://codeclimate.com/github/agross/guard-depend.png)](https://codeclimate.com/github/agross/guard-depend)
 
 guard-depend is useful for projects that produce build output like binaries. guard-depend will only run the command you specify if the build output does not exist or is not up to date with regard to the watched files.
 
