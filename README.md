@@ -4,7 +4,7 @@
 
 guard-depend is useful for projects that produce build output like binaries. guard-depend will only run the command you specify if the build output does not exist or is not up to date with regard to the watched files.
 
-* Tested against Ruby 2.0.0 and 2.1.0
+* Tested against Ruby 1.9.3, 2.0.0 and 2.1.0
 
 ## Installation
 
